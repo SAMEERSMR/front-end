@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { setallUser } from "../redux/action/user";
 import axios from "axios";
-import { Table } from "antd";
+import TableComponent from "./Table";
+import "./dashboard.css";
 
 const Dashboard = (props) => {
   const { setallUser } = props;
-  const [userList, setUserlist] = useState();
 
   useEffect(() => {
     getAllUserData();
@@ -22,14 +22,11 @@ const Dashboard = (props) => {
     })
       .then((res) => {
         setallUser(res.data);
-        setUserlist(res.data.users);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
-  console.log(userList);
 
   const columns = [
     {
@@ -55,8 +52,8 @@ const Dashboard = (props) => {
   ];
 
   return (
-    <div className="container">
-      <Table columns={columns} dataSource={userList} />
+    <div>
+      <TableComponent />
     </div>
   );
 };
