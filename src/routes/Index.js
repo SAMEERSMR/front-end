@@ -12,7 +12,6 @@ import Signin from "../components/signin";
 const MainRouter = () => {
   const Authnticated = () => {
     const logedIn = localStorage.getItem("user");
-    debugger;
     if (logedIn) {
       return (
         <Router>
